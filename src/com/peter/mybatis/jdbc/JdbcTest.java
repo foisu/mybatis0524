@@ -18,7 +18,7 @@ public class JdbcTest {
 			Class.forName("com.mysql.jdbc.Driver");
 			
 			//通过驱动管理类获取数据库链接
-			connection =  DriverManager.getConnection("jdbc:mysql://localhost:3306/mybatis?characterEncoding=utf-8", "root", "bqcBQC123");
+			connection =  DriverManager.getConnection("jdbc:mysql://120.26.242.138:3306/mybatis?characterEncoding=utf-8", "potest", "potest123");
 			//定义sql语句 ?表示占位符
 		String sql = "select * from user where username = ?";
 			//获取预处理statement
