@@ -12,10 +12,14 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 			<dataSource type="POOLED">
 				<property name="driver" value="com.mysql.jdbc.Driver" />
 				<property name="url" value="jdbc:mysql://120.26.242.138:3306/mybatis?characterEncoding=utf-8" />
-				<property name="username" value="root" />
+				<property name="username" value="potest" />
 				<property name="password" value="potest123" />
 			</dataSource>
 		</environment>
 	</environments>
+	<!-- 加载mapper -->
+	<mappers>
+		<mapper resource="sqlmap/User.xml"/>
+	</mappers>
 	
 </configuration>

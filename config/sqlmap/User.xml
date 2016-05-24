@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 需要注意#和$的使用差别 -->
+
+<mapper namespace="test">
+	<select id="findUserById" parameterType="int" resultType="com.peter.mybatis.po.User">
+		SELECT * FROM user WHERE ID = #{id}
+	</select>
+	
+	<select id="findUserByName" parameterType="String" resultType="com.peter.mybatis.po.User">
+		SELECT * FROM user WHERE username like '%${value}%'
+	</select>
+</mapper>
