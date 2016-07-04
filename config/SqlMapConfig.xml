@@ -5,6 +5,9 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 <configuration>
 	
 	<properties resource="db.properties"></properties>
+	<typeAliases>
+		<package name="com.peter.mybatis.po"/>
+	</typeAliases>
 
 	<!-- 和spring整合后 environments配置将废除-->
 	<environments default="development">

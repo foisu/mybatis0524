@@ -6,6 +6,34 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <!-- 需要注意#和$的使用差别 -->
 
 <mapper namespace="com.peter.mybatis.mapper.UserMapper">
+
+
+<sql id="query_user_where">
+	<if test="userCustom!=null">
+				<if test="userCustom.sex!=null and userCustom.sex!=''">
+					and user.sex = #{userCustom.sex}
+				</if>
+				<if test="userCustom.username!=null and userCustom.username!=''">
+					and user.username like '%${userCustom.username}%'
+				</if>
+				<if test="ids!=null">
+					<foreach collection="ids" item="user_id" open="AND (" close=")" separator="OR">
+						id=#{user_id}
+					</foreach>
+				</if>
+	</if>
+</sql>
+
+
+	<select id="findUserList" parameterType="com.peter.mybatis.po.UserQueryVo" 
+			resultType="com.peter.mybatis.po.UserCustom">
+		SELECT * FROM user
+		<where>
+			<include refid="query_user_where"></include>
+		</where> 
+	</select>
+
+
 	<select id="findUserById" parameterType="int" resultType="com.peter.mybatis.po.User">
 		SELECT * FROM user WHERE ID = #{id}
 	</select>
