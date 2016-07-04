@@ -11,6 +11,8 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.peter.mybatis.po.Orders;
+import com.peter.mybatis.po.OrdersCustom;
 import com.peter.mybatis.po.User;
 import com.peter.mybatis.po.UserCustom;
 import com.peter.mybatis.po.UserQueryVo;
@@ -47,6 +49,31 @@ public class UserMapperTest {
 			System.out.println(user);
 		}
 	}
+	
+	@Test
+	public void testOrdersCustom() throws Exception{
+		SqlSession sqlSession=sqlSessionFactory.openSession();
+		OrdersMapper ordersMapper = sqlSession.getMapper(OrdersMapper.class);
+
+		List<OrdersCustom> list=ordersMapper.findOrderUser();
+		for (OrdersCustom user : list) {
+			System.out.println(user);
+		}
+	}
+	
+	@Test
+	public void testOrdersCustomResultMap() throws Exception{
+		SqlSession sqlSession=sqlSessionFactory.openSession();
+		OrdersMapper ordersMapper = sqlSession.getMapper(OrdersMapper.class);
+
+		List<Orders> list=ordersMapper.findOrderUserResultMap();
+		for (Orders user : list) {
+			System.out.println(user);
+		}
+	}
+	
+	
+	
 	
 	@Test
 	public void testFindUserList() throws Exception{
